@@ -71,11 +71,13 @@ val id = "amuze"
 
 publishing {
     publications {
-        create<MavenPublication>("amuze") {
+        create<MavenPublication>("release") {
             groupId = "com.infbyte"
             artifactId = id
             version = ver
-            artifact("${layout.buildDirectory.get()}/outputs/aar/$id-release.aar")
+            afterEvaluate {
+                from(components["release"])
+            }
         }
     }
 

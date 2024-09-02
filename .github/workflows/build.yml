@@ -29,10 +29,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: amuze-debug
-          path: ./amuze/build/outputs/aar/*.apk
+          path: ./amuze/build/outputs/aar/*.aar
 
       - name: Upload Release AAR
         uses: actions/upload-artifact@v4
         with:
           name: amuze-release
-          path: ./amuze/build/outputs/aar/*.apk
+          path: ./amuze/build/outputs/aar/*.aar

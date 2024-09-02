@@ -73,7 +73,7 @@ publishing {
             groupId = "com.infbyte"
             artifactId = id
             version = ver
-            artifact("${layout.buildDirectory}/outputs/aar/$id-$ver")
+            artifact("${layout.buildDirectory}/outputs/aar/$id-release.aar")
         }
     }
 

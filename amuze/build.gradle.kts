@@ -1,3 +1,4 @@
+import com.android.ddmlib.Log
 import java.net.URI
 
 plugins {
@@ -62,6 +63,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
 }
 
 val ver = "1.0.0"
@@ -73,7 +75,7 @@ publishing {
             groupId = "com.infbyte"
             artifactId = id
             version = ver
-            artifact("${layout.buildDirectory}/outputs/aar/$id-release.aar")
+            artifact("${layout.buildDirectory.get()}/outputs/aar/$id-release.aar")
         }
     }
 

@@ -1,4 +1,4 @@
-name: Publish Amuze
+name: Publish
 
 on:
   release:

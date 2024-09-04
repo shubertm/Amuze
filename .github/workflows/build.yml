@@ -1,4 +1,4 @@
-name: Build Amuze
+name: Build
 
 on: [push]
 

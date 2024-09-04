@@ -11,7 +11,7 @@ permissions:
 
 jobs:
 
-  release:
+  publish:
     name: Amuze Release
     runs-on: ubuntu-latest
 
@@ -19,15 +19,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.1.4
+      #- name: Create Release
+       # id: create_release
+        #uses: actions/create-release@v1.1.4
+        #env:
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #with:
+          #tag_name: ${{ github.ref }}
+          #release_name: Amuze $(echo ${{ github.ref }} | rev | cut -d 'v' -f 1)
+          #body: |
+          #  Initial release
+          #draft: false
+          #prerelease: false
+
+      - name: Publish to Github Packages
+        run: ./gradlew amuze:publish
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Amuze $(echo ${{ github.ref }} | rev | cut -d 'v' -f 1)
-          body: |
-            Initial release
-          draft: false
-          prerelease: false

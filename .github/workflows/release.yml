@@ -22,7 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Amuze $(echo github.ref | rev | cut -d 'v' -f 1)
+          release_name: Amuze ${{ github.ref }}
           body: |
             Initial release
           draft: false

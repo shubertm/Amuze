@@ -25,21 +25,7 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
-      #- name: Create Release
-       # id: create_release
-        #uses: actions/create-release@v1.1.4
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #with:
-          #tag_name: ${{ github.ref }}
-          #release_name: Amuze $(echo ${{ github.ref }} | rev | cut -d 'v' -f 1)
-          #body: |
-          #  Initial release
-          #draft: false
-          #prerelease: false
-
-      - name: Publish to Github Packages
-        run: ./gradlew amuze:publish
-
+      - name: Create Release
+        run: gh release create ${{ github.event.release.tag_name }} --title "Amuze ${{ github.event.release.tag_name }}" --notes "Initial release"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

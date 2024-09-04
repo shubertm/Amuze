@@ -26,6 +26,6 @@ jobs:
           java-version: '17'
 
       - name: Create Release
-        run: gh release create ${{ github.ref_name }} --title "Amuze ${{ github.ref_name }}" --notes "Initial release"
+        run: gh release create ${{ github.ref_name }} --title "Amuze ${{ $(echo github.ref_name | rev | cut -d 'v' -f 1) }}" --notes "Initial release"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

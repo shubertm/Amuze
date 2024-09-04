@@ -35,7 +35,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
 
       - name: Publish to Github Packages
-        run: ./gradlew amuze:publish
+        run: ./gradlew amuze:assembleDebug
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

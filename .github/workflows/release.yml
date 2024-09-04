@@ -8,21 +8,24 @@ on:
 jobs:
 
   release:
-    name: Create Release
+    name: Amuze Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Amuze ${{ github.ref }}
+          release_name: Amuze $(echo ${{ github.ref }} | rev | cut -d 'v' -f 1)
           body: |
             Initial release
           draft: false

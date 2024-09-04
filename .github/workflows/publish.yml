@@ -3,7 +3,7 @@ name: Publish
 on:
   release:
     types:
-      - created
+      [created]
 
 jobs:
   publish:
@@ -25,8 +25,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Publish to Maven Central
-        run: ./gradlew amuze:assembleRelease
-        # run: ./gradlew amuze:publishAllPublicationsToMavenCentral
+        run: ./gradlew amuze:publishAllPublicationsToMavenCentral
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
@@ -35,7 +34,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
 
       - name: Publish to Github Packages
-        run: ./gradlew amuze:assembleDebug
+        run: ./gradlew amuze:publish
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

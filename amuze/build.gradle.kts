@@ -1,10 +1,12 @@
 import com.android.ddmlib.Log
+import com.vanniktech.maven.publish.SonatypeHost
 import java.net.URI
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     `maven-publish`
+    alias(libs.plugins.com.vanniktech.maven.publish)
 }
 
 android {
@@ -66,7 +68,7 @@ dependencies {
 
 }
 
-val ver = "1.0.0"
+val ver = "0.1.0"
 val id = "amuze"
 
 publishing {
@@ -91,5 +93,41 @@ publishing {
             }
         }
 
+    }
+}
+
+mavenPublishing {
+
+    coordinates("com.infbyte", id, ver)
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+
+    signAllPublications()
+
+    pom {
+        name.set("Amuze")
+        description.set("Common functionality among media apps")
+        inceptionYear.set("2024")
+        url.set("https://github.com/shubertm/amuze")
+        licenses {
+          license {
+              name.set("MIT License")
+              url.set("https://opensource.org/license/mit")
+              distribution.set("https://github.com/shubertm/Amuze/blob/main/LICENSE")
+          }
+        }
+        developers {
+            developer {
+                id.set("shubertm")
+                name.set("Shubert Munthali")
+                url.set("https://github.com/shubertm/")
+            }
+        }
+
+        scm {
+            url.set("https://github.com/shubertm/amuze")
+            connection.set("scm:git:git://github.com/shubertm/amuze.git")
+            developerConnection.set("scm:git:ssh://github.com/shubertm/amuze.git")
+        }
     }
 }

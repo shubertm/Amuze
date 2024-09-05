@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     `maven-publish`
     alias(libs.plugins.com.vanniktech.maven.publish)
+    signing
 }
 
 android {

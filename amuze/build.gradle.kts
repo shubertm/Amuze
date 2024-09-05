@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 import com.android.ddmlib.Log
 import com.vanniktech.maven.publish.SonatypeHost
 import java.net.URI
@@ -5,9 +6,9 @@ import java.net.URI
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    `maven-publish`
+    // `maven-publish`
     alias(libs.plugins.com.vanniktech.maven.publish)
-    signing
+    // signing
 }
 
 android {
@@ -72,7 +73,7 @@ dependencies {
 val ver = "0.1.0"
 val id = "amuze"
 
-publishing {
+/* publishing {
     publications {
         create<MavenPublication>("release") {
             groupId = "com.infbyte"
@@ -95,7 +96,7 @@ publishing {
         }
 
     }
-}
+}*/
 
 mavenPublishing {
 

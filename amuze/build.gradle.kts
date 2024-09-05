@@ -107,7 +107,7 @@ mavenPublishing {
 
     pom {
         name.set("Amuze")
-        description.set("Common functionality among media apps")
+        description.set("Common functionality for media apps")
         inceptionYear.set("2024")
         url.set("https://github.com/shubertm/amuze")
         licenses {

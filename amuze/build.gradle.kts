@@ -106,6 +106,8 @@ mavenPublishing {
 
     signAllPublications()
 
+    this.
+
     pom {
         name.set("Amuze")
         description.set("Common functionality for media apps")

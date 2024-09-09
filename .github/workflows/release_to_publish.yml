@@ -49,9 +49,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Install GPG
-        run: sudo apt-get install gnupg
-
       - name: Publish to Maven Central
         run: ./gradlew amuze:publishAllPublicationsToMavenCentral
         env:

@@ -1,4 +1,7 @@
+import com.android.build.gradle.internal.component.ComponentCreationConfig
+import com.android.build.gradle.internal.scope.publishBuildArtifacts
 import com.android.build.gradle.internal.tasks.factory.dependsOn
+import com.android.build.gradle.internal.utils.createPublishingInfoForLibrary
 import com.android.ddmlib.Log
 import com.vanniktech.maven.publish.SonatypeHost
 import java.net.URI
@@ -10,6 +13,13 @@ plugins {
     alias(libs.plugins.com.vanniktech.maven.publish)
     // signing
 }
+
+val ver = "0.1.0"
+val id = "amuze"
+val grp = "com.infbyte"
+
+group = grp
+version = ver
 
 android {
     namespace = "com.infbyte.amuze"
@@ -70,9 +80,6 @@ dependencies {
 
 }
 
-val ver = "0.1.0"
-val id = "amuze"
-
 /* publishing {
     publications {
         create<MavenPublication>("release") {
@@ -100,19 +107,20 @@ val id = "amuze"
 
 mavenPublishing {
 
-    coordinates("com.infbyte", id, ver)
+    coordinates(grp, id, ver)
 
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
 
     signAllPublications()
-
-    this.
 
     pom {
         name.set("Amuze")
         description.set("Common functionality for media apps")
         inceptionYear.set("2024")
         url.set("https://github.com/shubertm/amuze")
+
+        packaging = "aar"
+
         licenses {
           license {
               name.set("MIT License")

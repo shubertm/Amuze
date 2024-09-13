@@ -1,4 +1,4 @@
-package com.infbyte.amuzic.ui.screens
+package com.infbyte.amuze.ui.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes

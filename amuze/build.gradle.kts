@@ -3,6 +3,7 @@ import com.android.build.gradle.internal.scope.publishBuildArtifacts
 import com.android.build.gradle.internal.tasks.factory.dependsOn
 import com.android.build.gradle.internal.utils.createPublishingInfoForLibrary
 import com.android.ddmlib.Log
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.SonatypeHost
 import java.net.URI
 
@@ -108,6 +109,10 @@ dependencies {
 mavenPublishing {
 
     coordinates(grp, id, ver)
+
+    configure(
+        AndroidSingleVariantLibrary("release", false, false)
+    )
 
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
 

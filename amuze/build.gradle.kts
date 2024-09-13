@@ -1,11 +1,5 @@
-import com.android.build.gradle.internal.component.ComponentCreationConfig
-import com.android.build.gradle.internal.scope.publishBuildArtifacts
-import com.android.build.gradle.internal.tasks.factory.dependsOn
-import com.android.build.gradle.internal.utils.createPublishingInfoForLibrary
-import com.android.ddmlib.Log
 import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.SonatypeHost
-import java.net.URI
 
 plugins {
     alias(libs.plugins.android.library)
@@ -15,15 +9,13 @@ plugins {
     // signing
 }
 
-val ver = "0.1.0"
-val id = "amuze"
-val grp = "com.infbyte"
-
-group = grp
-version = ver
+val versionName = "0.1.0"
+val artifactId = "amuze"
+val groupId = "com.infbyte"
 
 android {
     namespace = "com.infbyte.amuze"
+    version = versionName
     compileSdk = 34
 
     defaultConfig {
@@ -86,7 +78,7 @@ dependencies {
         create<MavenPublication>("release") {
             groupId = "com.infbyte"
             artifactId = id
-            version = ver
+            version = versionName
             afterEvaluate {
                 from(components["release"])
             }
@@ -108,11 +100,7 @@ dependencies {
 
 mavenPublishing {
 
-    coordinates(grp, id, ver)
-
-    configure(
-        AndroidSingleVariantLibrary("release", false, false)
-    )
+    coordinates(groupId, artifactId, versionName)
 
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
 

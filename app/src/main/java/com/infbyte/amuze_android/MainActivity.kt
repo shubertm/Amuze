@@ -67,9 +67,7 @@ fun PreviewAboutScreen() {
             appVersion = "1.0",
             R.drawable.ic_amuzic_foreground,
             privacyPolicyLinkRes = R.string.amuze_privacy_policy
-        ) {
-
-        }
+        ) {}
     }
 }
 

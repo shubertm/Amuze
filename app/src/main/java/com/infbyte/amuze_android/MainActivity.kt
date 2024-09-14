@@ -84,7 +84,7 @@ fun PreviewLoadingScreen() {
 fun PreviewNoMediaPermissionScreen() {
     AmuzeAndroidTheme {
         NoMediaPermissionScreen(
-            appIcon = R.drawable.ic_amuzic_foreground,
+            appIcon = R.drawable.ic_amuzic_intro,
             action = R.string.amuze_listen,
             onStartAction = {},
             onExit = {}

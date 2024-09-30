@@ -58,8 +58,8 @@ jobs:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
 
-          #- name: Publish to Github Packages
-       # run: ./gradlew amuze:publish
+      #- name: Publish to Github Packages
+        #run: ./gradlew amuze:publish
 
         #env:
          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

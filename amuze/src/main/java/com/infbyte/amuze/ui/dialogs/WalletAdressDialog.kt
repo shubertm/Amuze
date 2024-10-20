@@ -54,27 +54,25 @@ fun WalletAddressDialog(
                 Text(
                     address,
                     Modifier
-                        .fillMaxWidth(.735f)
+                        .fillMaxWidth(.73f)
                         .padding(end = 8.dp)
                         .horizontalScroll(addressScrollState),
                     maxLines = 1
                 )
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    TextButton(
-                        onClick = {
-                            val clipboardManager =
-                                context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                            clipboardManager.setPrimaryClip(
-                                ClipData.newPlainText(
-                                    context.getString(R.string.amuze_wallet_address),
-                                    address
-                                )
+                TextButton(
+                    onClick = {
+                        val clipboardManager =
+                            context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        clipboardManager.setPrimaryClip(
+                            ClipData.newPlainText(
+                                context.getString(R.string.amuze_wallet_address),
+                                address
                             )
-                        }
-                    ) {
-                        Icon(painterResource(R.drawable.ic_content_copy), contentDescription = "")
-                        Text(stringResource(R.string.amuze_copy))
+                        )
                     }
+                ) {
+                    Icon(painterResource(R.drawable.ic_content_copy), contentDescription = "")
+                    Text(stringResource(R.string.amuze_copy))
                 }
             }
         }

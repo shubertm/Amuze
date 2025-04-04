@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose.compiler)
 }
 
-val versionName = "0.2.1"
+val versionName = "0.2.2"
 val artifactId = "amuze"
 val groupId = "com.infbyte"
 

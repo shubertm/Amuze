@@ -37,6 +37,9 @@ import androidx.compose.ui.unit.dp
 import com.infbyte.amuze.R
 import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
 import com.infbyte.amuze.utils.openWebLink
+import java.time.Instant
+import java.time.Year
+import java.util.Calendar
 
 @Composable
 fun AboutScreen(
@@ -44,6 +47,7 @@ fun AboutScreen(
     appVersion: String,
     @DrawableRes appIconRes: Int,
     @StringRes privacyPolicyLinkRes: Int,
+    socialLinks: List<String> = emptyList(),
     onNavigateBack: () -> Unit
 ) {
     val context = LocalContext.current
@@ -173,17 +177,18 @@ fun AboutScreen(
                         }
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { showWalletAddressDialog(R.string.usdc_address, R.string.amuze_usdc, R.drawable.ic_usdc) },
                         Modifier.padding(16.dp),
                         colors = ButtonDefaults.elevatedButtonColors(),
                         elevation = ButtonDefaults.elevatedButtonElevation()
                     ) {
-                        Image(painterResource(R.drawable.ic_coffee), contentDescription = "", Modifier.size(32.dp))
-                        Text(stringResource(R.string.amuze_coffee), Modifier.padding(start = 8.dp))
+                        Image(painterResource(R.drawable.ic_usdc), contentDescription = "", Modifier.size(32.dp))
+                        Text(stringResource(R.string.amuze_usdc), Modifier.padding(start = 8.dp))
                     }
                 }
             }
         }
+
         Column(
             Modifier.align(Alignment.BottomCenter),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -199,7 +204,7 @@ fun AboutScreen(
                 Image(painterResource(R.drawable.ic_language), contentDescription = "", Modifier.size(32.dp))
                 Text(stringResource(R.string.amuze_website), Modifier.padding(start = 8.dp))
             }
-            Text(stringResource(R.string.amuze_copyright, Char(169)), Modifier.padding(8.dp))
+            Text(stringResource(R.string.amuze_copyright, Char(169), Calendar.getInstance().get(Calendar.YEAR)), Modifier.padding(8.dp))
         }
     }
     BackHandler { onNavigateBack() }

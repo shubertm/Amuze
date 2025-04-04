@@ -81,7 +81,7 @@ fun NoMediaPermissionScreen(
                     Placeholder(32.sp, 32.sp, PlaceholderVerticalAlign.AboveBaseline)
                 ) {
                     Icon(
-                        ImageVector.vectorResource(appIcon),
+                        painterResource(appIcon),
                         contentDescription = "",
                         tint = MaterialTheme.colorScheme.primary
                     )

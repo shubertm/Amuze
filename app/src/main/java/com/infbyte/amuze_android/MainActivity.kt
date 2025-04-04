@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -21,6 +22,7 @@ import com.infbyte.amuze.ui.screens.LoadingScreen
 import com.infbyte.amuze.ui.screens.NoMediaAvailableScreen
 import com.infbyte.amuze.ui.screens.NoMediaPermissionScreen
 import com.infbyte.amuze.ui.screens.NoSearchResultScreen
+import com.infbyte.amuze.ui.views.AmuzeSeekBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,22 +38,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
-fun PreviewSlider() {
+fun PreviewSeekBar() {
     AmuzeAndroidTheme {
-        Slider(
-            value = 0.5f,
-            onValueChange = {}
-        )
+        Box {
+            AmuzeSeekBar()
+        }
     }
 }
 @Preview(showBackground = true)
@@ -92,7 +85,7 @@ fun PreviewLoadingScreen() {
 fun PreviewNoMediaPermissionScreen() {
     AmuzeAndroidTheme {
         NoMediaPermissionScreen(
-            appIcon = R.drawable.ic_amuzic_intro,
+            appIcon = R.drawable.amuzeo_intro,
             action = R.string.amuze_listen,
             onStartAction = {},
             onExit = {}

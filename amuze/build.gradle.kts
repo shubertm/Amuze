@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose.compiler)
 }
 
-val versionName = "0.2.2"
+val versionName: String = System.getenv("VERSION_NAME")
 val artifactId = "amuze"
 val groupId = "com.infbyte"
 

@@ -1,5 +1,6 @@
 package com.infbyte.amuze.ui.screens
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -32,13 +33,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.infbyte.amuze.R
 import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
+import com.infbyte.amuze.utils.GoogleMobileAdsConsentManager
 import com.infbyte.amuze.utils.openWebLink
-import java.time.Instant
-import java.time.Year
 import java.util.Calendar
 
 @Composable
@@ -48,9 +50,12 @@ fun AboutScreen(
     @DrawableRes appIconRes: Int,
     @StringRes privacyPolicyLinkRes: Int,
     socialLinks: List<String> = emptyList(),
+    adsConsentManager: GoogleMobileAdsConsentManager,
     onNavigateBack: () -> Unit
 ) {
     val context = LocalContext.current
+
+    val activity = context as Activity
 
     var showWalletAddressDialog by rememberSaveable {
         mutableStateOf(false)
@@ -131,6 +136,19 @@ fun AboutScreen(
                     Text(stringResource(R.string.amuze_privacy_policy))
                 }
             }
+            if (adsConsentManager.isPrivacyOptionsRequired) {
+            item {
+                Button(
+                    onClick = {
+                        adsConsentManager.showConsentForm(activity)
+                    },
+                    Modifier.padding(top = 16.dp),
+                    colors = ButtonDefaults.textButtonColors(),
+                ) {
+                    Text(stringResource(R.string.amuze_privacy_settings))
+                }
+            }
+             }
             item {
                 Column(
                     Modifier

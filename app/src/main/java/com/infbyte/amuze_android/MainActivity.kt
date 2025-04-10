@@ -12,6 +12,7 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.infbyte.amuze.R
@@ -23,6 +24,7 @@ import com.infbyte.amuze.ui.screens.NoMediaAvailableScreen
 import com.infbyte.amuze.ui.screens.NoMediaPermissionScreen
 import com.infbyte.amuze.ui.screens.NoSearchResultScreen
 import com.infbyte.amuze.ui.views.AmuzeSeekBar
+import com.infbyte.amuze.utils.GoogleMobileAdsConsentManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +33,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             AmuzeAndroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AboutScreen("Amuze-Demo", BuildConfig.VERSION_NAME, R.drawable.ic_amuzic_foreground, R.string.amuze_privacy_policy) { }
+                    val context = LocalContext.current
+                    AboutScreen(
+                        "Amuze-Demo",
+                        BuildConfig.VERSION_NAME,
+                        R.drawable.ic_amuzic_foreground,
+                        R.string.amuze_privacy_policy,
+                        adsConsentManager = GoogleMobileAdsConsentManager(context)
+                    ) { }
                 }
             }
         }
@@ -63,11 +72,13 @@ fun PreviewWalletAddressDialog() {
 @Composable
 fun PreviewAboutScreen() {
     AmuzeAndroidTheme {
+        val context = LocalContext.current
         AboutScreen(
             appName = "Amuze",
             appVersion = "1.0",
             R.drawable.ic_amuzic_foreground,
-            privacyPolicyLinkRes = R.string.amuze_privacy_policy
+            privacyPolicyLinkRes = R.string.amuze_privacy_policy,
+            adsConsentManager = GoogleMobileAdsConsentManager(context)
         ) {}
     }
 }

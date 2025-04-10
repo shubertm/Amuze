@@ -23,4 +23,5 @@
     <string name="patreon_link">https://patreon.com/shubertm</string>
     <string name="amuze_usdc">USDC on Ethereum</string>
     <string name="usdc_address">0x4906e6C45D466b9678eBbFb70bfBE3021d26Da5D</string>
+    <string name="amuze_privacy_settings">Privacy Settings</string>
 </resources>

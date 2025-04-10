@@ -20,14 +20,15 @@ jobs:
         uses: gradle/actions/wrapper-validation@v3
 
       - name: Build Debug AAR
-        run: |
-          export VERSION_NAME=$(echo ${{ github.ref_name }}-debug)          
-          ./gradlew amuze:assembleDebug
+        run: ./gradlew amuze:assembleDebug
+        env:
+          VERSION_NAME: $(echo ${{ github.ref_name }}-debug)
 
       - name: Build Release AAR
-        run: |
-          export VERSION_NAME=$(echo ${{ github.ref_name }}-release)
-          ./gradlew amuze:assembleRelease
+        run: ./gradlew amuze:assembleRelease
+        env:
+          VERSION_NAME: $(echo ${{ github.ref_name }}-debug)
+
 
       - name: Upload Debug AAR
         uses: actions/upload-artifact@v4

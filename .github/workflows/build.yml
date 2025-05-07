@@ -27,7 +27,7 @@ jobs:
       - name: Build Release AAR
         run: ./gradlew amuze:assembleRelease
         env:
-          VERSION_NAME: $(echo ${{ github.ref_name }}-debug)
+          VERSION_NAME: $(echo ${{ github.ref_name }}-rc)
 
 
       - name: Upload Debug AAR

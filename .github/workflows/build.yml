@@ -22,12 +22,12 @@ jobs:
       - name: Build Debug AAR
         run: ./gradlew amuze:assembleDebug
         env:
-          VERSION_NAME: $(echo ${{ github.ref_name }}-debug)
+          VERSION_NAME: ${{ github.ref_name }}-debug
 
       - name: Build Release AAR
         run: ./gradlew amuze:assembleRelease
         env:
-          VERSION_NAME: $(echo ${{ github.ref_name }}-rc)
+          VERSION_NAME: ${{ github.ref_name }}-rc
 
 
       - name: Upload Debug AAR

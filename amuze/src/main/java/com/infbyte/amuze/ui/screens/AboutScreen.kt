@@ -39,7 +39,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.infbyte.amuze.R
 import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
-import com.infbyte.amuze.utils.GoogleMobileAdsConsentManager
+import com.infbyte.amuze.ads.GoogleMobileAdsConsentManager
 import com.infbyte.amuze.utils.openWebLink
 import java.util.Calendar
 
@@ -219,7 +219,11 @@ fun AboutScreen(
                 colors = ButtonDefaults.elevatedButtonColors(),
                 elevation = ButtonDefaults.elevatedButtonElevation()
             ) {
-                Image(painterResource(R.drawable.ic_language), contentDescription = "", Modifier.size(32.dp))
+                Icon(
+                    painterResource(R.drawable.ic_language),
+                    contentDescription = "", Modifier.size(32.dp),
+                    tint = MaterialTheme.colorScheme.primary
+                )
                 Text(stringResource(R.string.amuze_website), Modifier.padding(start = 8.dp))
             }
             Text(stringResource(R.string.amuze_copyright, Char(169), Calendar.getInstance().get(Calendar.YEAR)), Modifier.padding(8.dp))

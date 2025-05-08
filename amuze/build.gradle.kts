@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose.compiler)
 }
 
-val versionName: String = System.getenv("VERSION_NAME") ?: "rc"
+val versionName: String = System.getenv("VERSION_NAME") ?: "0.2.4-a"
 val artifactId = "amuze"
 val groupId = "com.infbyte"
 
@@ -28,7 +28,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

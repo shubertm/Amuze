@@ -24,7 +24,7 @@ import com.infbyte.amuze.ui.screens.NoMediaAvailableScreen
 import com.infbyte.amuze.ui.screens.NoMediaPermissionScreen
 import com.infbyte.amuze.ui.screens.NoSearchResultScreen
 import com.infbyte.amuze.ui.views.AmuzeSeekBar
-import com.infbyte.amuze.utils.GoogleMobileAdsConsentManager
+import com.infbyte.amuze.ads.GoogleMobileAdsConsentManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

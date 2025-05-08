@@ -5,7 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContract
-import com.infbyte.amuze.permissions.AmuzePermissions.isReadPermissionGranted
+import com.infbyte.amuze.permissions.AmuzePermissions.isReadAudioPermissionGranted
+import com.infbyte.amuze.permissions.AmuzePermissions.isReadVideoPermissionGranted
 
 class AppSettingsContract : ActivityResultContract<String, Boolean>() {
     private var context: Context? = null
@@ -28,7 +29,8 @@ class AppSettingsContract : ActivityResultContract<String, Boolean>() {
         intent: Intent?,
     ): Boolean {
         return if (context != null) {
-            val granted = isReadPermissionGranted(context!!)
+            val granted = isReadAudioPermissionGranted(context!!) ||
+                    isReadVideoPermissionGranted(context!!)
             context = null
             granted
         } else {

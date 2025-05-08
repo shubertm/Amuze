@@ -4,11 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.annotation.StringRes
+import androidx.core.net.toUri
 
 fun Context.openWebLink(@StringRes linkRes: Int) {
     val link = getString(linkRes)
     startActivity(
         Intent(Intent.ACTION_VIEW)
-            .setData(Uri.parse(link))
+            .setData(link.toUri())
     )
 }

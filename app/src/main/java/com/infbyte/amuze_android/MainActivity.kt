@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         R.drawable.ic_amuzic_foreground,
                         R.string.amuze_privacy_policy,
                         adsConsentManager = GoogleMobileAdsConsentManager(context)
-                    ) { }
+                    )
                 }
             }
         }
@@ -79,7 +79,7 @@ fun PreviewAboutScreen() {
             R.drawable.ic_amuzic_foreground,
             privacyPolicyLinkRes = R.string.amuze_privacy_policy,
             adsConsentManager = GoogleMobileAdsConsentManager(context)
-        ) {}
+        )
     }
 }
 

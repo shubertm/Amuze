@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.infbyte.amuze_android"
+    namespace = "com.infbyte.amuze"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.infbyte.amuze_android"
+        applicationId = "com.infbyte.amuze"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

@@ -51,7 +51,6 @@ fun AboutScreen(
     @StringRes privacyPolicyLinkRes: Int,
     socialLinks: List<String> = emptyList(),
     adsConsentManager: GoogleMobileAdsConsentManager,
-    onNavigateBack: () -> Unit
 ) {
     val context = LocalContext.current
 
@@ -229,5 +228,4 @@ fun AboutScreen(
             Text(stringResource(R.string.amuze_copyright, Char(169), Calendar.getInstance().get(Calendar.YEAR)), Modifier.padding(8.dp))
         }
     }
-    BackHandler { onNavigateBack() }
 }

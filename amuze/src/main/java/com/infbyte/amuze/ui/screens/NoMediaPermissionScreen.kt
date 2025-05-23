@@ -48,7 +48,7 @@ fun NoMediaPermissionScreen(
     @StringRes action: Int,
     onStartAction: () -> Unit,
     onExit: () -> Unit,
-    aboutApp: @Composable (() -> Unit) -> Unit
+    aboutApp: () -> Unit
 ) {
     Box(
         Modifier
@@ -56,15 +56,9 @@ fun NoMediaPermissionScreen(
             .fillMaxSize().navigationBarsPadding().statusBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
-        var showAbout by rememberSaveable { mutableStateOf(false) }
-
-        if (showAbout) {
-            aboutApp { showAbout = false }
-            return
-        }
 
         IconButton(
-            onClick = { showAbout = true },
+            onClick = { aboutApp() },
             Modifier
                 .align(Alignment.TopEnd)
                 .padding(top = 8.dp, end = 8.dp),

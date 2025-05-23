@@ -20,39 +20,36 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.infbyte.amuze.R
-import com.infbyte.amuze.ui.theme.AmuzeAndroidTheme
 
 @Composable
 fun NoMediaAvailableScreen(
     @StringRes messageId: Int,
     onRefresh: () -> Unit,
     onExit: () -> Unit,
-    aboutApp: () -> Unit
+    aboutApp: () -> Unit,
 ) {
     Box(
         Modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize().navigationBarsPadding().statusBarsPadding(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         IconButton(
             onClick = { aboutApp() },
             Modifier
                 .align(Alignment.TopEnd)
                 .padding(top = 8.dp, end = 8.dp),
-            colors = IconButtonDefaults.iconButtonColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
-            )
+            colors =
+                IconButtonDefaults.iconButtonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                ),
         ) {
             Icon(Icons.Outlined.Info, contentDescription = "")
         }
@@ -60,13 +57,13 @@ fun NoMediaAvailableScreen(
             Text(
                 stringResource(messageId),
                 Modifier.padding(top = 31.dp),
-                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             ) // stringResource(id = R.string.amuzic_intro_1))
             Button(
                 onClick = { onRefresh() },
                 Modifier.padding(top = 64.dp),
                 colors = ButtonDefaults.filledTonalButtonColors(),
-                elevation = ButtonDefaults.filledTonalButtonElevation()
+                elevation = ButtonDefaults.filledTonalButtonElevation(),
             ) {
                 Text(stringResource(R.string.amuze_refresh))
             }

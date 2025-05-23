@@ -32,18 +32,18 @@ fun WalletAddressDialog(
     address: String,
     currencyName: String,
     currencyIconRes: Int,
-    onDismiss: (Boolean) -> Unit
+    onDismiss: (Boolean) -> Unit,
 ) {
     val context = LocalContext.current
 
     Dialog(
-        onDismissRequest = { onDismiss(false) }
+        onDismissRequest = { onDismiss(false) },
     ) {
         Column(
             Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.background, RoundedCornerShape(8.dp))
-                .padding(8.dp)
+                .padding(8.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(painterResource(currencyIconRes), contentDescription = "", Modifier.size(32.dp))
@@ -57,7 +57,7 @@ fun WalletAddressDialog(
                         .fillMaxWidth(.73f)
                         .padding(end = 8.dp)
                         .horizontalScroll(addressScrollState),
-                    maxLines = 1
+                    maxLines = 1,
                 )
                 TextButton(
                     onClick = {
@@ -66,10 +66,10 @@ fun WalletAddressDialog(
                         clipboardManager.setPrimaryClip(
                             ClipData.newPlainText(
                                 context.getString(R.string.amuze_wallet_address),
-                                address
-                            )
+                                address,
+                            ),
                         )
-                    }
+                    },
                 ) {
                     Icon(painterResource(R.drawable.ic_content_copy), contentDescription = "")
                     Text(stringResource(R.string.amuze_copy))

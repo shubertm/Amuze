@@ -1,4 +1,4 @@
-package com.infbyte.amuze_android
+package com.infbyte.amuze
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.infbyte.amuze.R
 import com.infbyte.amuze.ads.GoogleMobileAdsConsentManager
 import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
 import com.infbyte.amuze.ui.screens.AboutScreen
@@ -20,8 +19,9 @@ import com.infbyte.amuze.ui.screens.LoadingScreen
 import com.infbyte.amuze.ui.screens.NoMediaAvailableScreen
 import com.infbyte.amuze.ui.screens.NoMediaPermissionScreen
 import com.infbyte.amuze.ui.screens.NoSearchResultScreen
+import com.infbyte.amuze.ui.theme.AmuzeAndroidTheme
 import com.infbyte.amuze.ui.views.AmuzeSeekBar
-import com.infbyte.amuze_android.ui.theme.AmuzeAndroidTheme
+import com.infbyte.amuze_android.BuildConfig
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +29,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AmuzeAndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) {
                     val context = LocalContext.current
+                    it
                     AboutScreen(
                         "Amuze-Demo",
                         BuildConfig.VERSION_NAME,
                         R.drawable.ic_amuzic_foreground,
                         R.string.amuze_privacy_policy,
-                        adsConsentManager = GoogleMobileAdsConsentManager(context)
+                        adsConsentManager = GoogleMobileAdsConsentManager(context),
                     )
                 }
             }
@@ -53,6 +54,7 @@ fun PreviewSeekBar() {
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewWalletAddressDialog() {
@@ -60,7 +62,7 @@ fun PreviewWalletAddressDialog() {
         WalletAddressDialog(
             stringResource(R.string.btc_address),
             stringResource(R.string.amuze_btc),
-            R.drawable.ic_btc
+            R.drawable.ic_btc,
         ) {}
     }
 }
@@ -75,7 +77,7 @@ fun PreviewAboutScreen() {
             appVersion = "1.0",
             R.drawable.ic_amuzic_foreground,
             privacyPolicyLinkRes = R.string.amuze_privacy_policy,
-            adsConsentManager = GoogleMobileAdsConsentManager(context)
+            adsConsentManager = GoogleMobileAdsConsentManager(context),
         )
     }
 }
@@ -96,13 +98,11 @@ fun PreviewNoMediaPermissionScreen() {
             appIcon = R.drawable.amuzeo_intro,
             action = R.string.amuze_listen,
             onStartAction = {},
-            onExit = {}
+            onExit = {},
         ) {
-
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
@@ -111,9 +111,8 @@ fun PreviewNoMediaAvailableScreen() {
         NoMediaAvailableScreen(
             R.string.amuze_no_videos,
             onRefresh = {},
-            onExit = {}
+            onExit = {},
         ) {
-
         }
     }
 }

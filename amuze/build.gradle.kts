@@ -1,4 +1,4 @@
-import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.com.vanniktech.maven.publish)
     // signing
     alias(libs.plugins.jetbrains.compose.compiler)
+    alias(libs.plugins.gradle.ktlint)
 }
 
 val versionName: String = System.getenv("VERSION_NAME") ?: "0.2.4-a"
@@ -31,7 +32,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -67,7 +68,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-
 }
 
 /* publishing {
@@ -112,11 +112,11 @@ mavenPublishing {
         packaging = "aar"
 
         licenses {
-          license {
-              name.set("MIT License")
-              url.set("https://opensource.org/license/mit")
-              distribution.set("https://github.com/shubertm/Amuze/blob/main/LICENSE")
-          }
+            license {
+                name.set("MIT License")
+                url.set("https://opensource.org/license/mit")
+                distribution.set("https://github.com/shubertm/Amuze/blob/main/LICENSE")
+            }
         }
         developers {
             developer {
@@ -133,3 +133,6 @@ mavenPublishing {
         }
     }
 }
+
+tasks.preBuild.dependsOn("ktlintCheck")
+tasks.ktlintCheck.dependsOn("ktlintFormat")

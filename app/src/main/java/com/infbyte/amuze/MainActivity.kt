@@ -29,8 +29,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AmuzeAndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) {
                     val context = LocalContext.current
+                    it
                     AboutScreen(
                         "Amuze-Demo",
                         BuildConfig.VERSION_NAME,

@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.com.vanniktech.maven.publish)
     // signing
     alias(libs.plugins.jetbrains.compose.compiler)
+    alias(libs.plugins.gradle.ktlint)
 }
 
 val versionName: String = System.getenv("VERSION_NAME") ?: "0.2.4-a"

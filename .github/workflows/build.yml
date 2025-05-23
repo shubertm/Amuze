@@ -60,8 +60,8 @@ jobs:
 
          - uses: actions/upload-artifact@v4
            with:
-           name: lint-results
-           path: ./amuze/build/reports/*.html
+               name: lint-results
+               path: ./amuze/build/reports/*.html
 
     ktlint:
         environment: Development

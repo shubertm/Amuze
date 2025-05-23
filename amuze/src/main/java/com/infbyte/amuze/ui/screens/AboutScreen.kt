@@ -1,7 +1,6 @@
 package com.infbyte.amuze.ui.screens
 
 import android.app.Activity
-import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
@@ -33,13 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.infbyte.amuze.R
-import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
 import com.infbyte.amuze.ads.GoogleMobileAdsConsentManager
+import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
 import com.infbyte.amuze.utils.openWebLink
 import java.util.Calendar
 
@@ -72,7 +69,11 @@ fun AboutScreen(
         mutableIntStateOf(0)
     }
 
-    fun showWalletAddressDialog(@StringRes addressId: Int, @StringRes nameId: Int, @DrawableRes currencyIconId: Int) {
+    fun showWalletAddressDialog(
+        @StringRes addressId: Int,
+        @StringRes nameId: Int,
+        @DrawableRes currencyIconId: Int,
+    ) {
         context.apply {
             walletAddress = getString(addressId)
             currencyName = getString(nameId)
@@ -90,7 +91,7 @@ fun AboutScreen(
     Box(
         Modifier.fillMaxSize().navigationBarsPadding()
             .background(MaterialTheme.colorScheme.background),
-        Alignment.Center
+        Alignment.Center,
     ) {
         LazyColumn(
             Modifier
@@ -98,7 +99,7 @@ fun AboutScreen(
                 .align(Alignment.TopCenter)
                 .background(MaterialTheme.colorScheme.background)
                 .padding(bottom = 96.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             item {
                 Box(contentAlignment = Alignment.Center) {
@@ -108,19 +109,19 @@ fun AboutScreen(
                         Modifier
                             .padding(top = 32.dp)
                             .size(160.dp),
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = MaterialTheme.colorScheme.primary,
                     )
                     Text(
                         appName,
                         Modifier.align(Alignment.BottomCenter),
-                        style = MaterialTheme.typography.titleLarge
+                        style = MaterialTheme.typography.titleLarge,
                     )
                 }
             }
             item {
                 Text(
                     appVersion,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
                 )
             }
             item {
@@ -130,45 +131,45 @@ fun AboutScreen(
                     },
                     Modifier.padding(top = 16.dp),
                     colors = ButtonDefaults.filledTonalButtonColors(),
-                    elevation = ButtonDefaults.filledTonalButtonElevation()
+                    elevation = ButtonDefaults.filledTonalButtonElevation(),
                 ) {
                     Text(stringResource(R.string.amuze_privacy_policy))
                 }
             }
             if (adsConsentManager.isPrivacyOptionsRequired) {
-            item {
-                Button(
-                    onClick = {
-                        adsConsentManager.showConsentForm(activity)
-                    },
-                    Modifier.padding(top = 16.dp),
-                    colors = ButtonDefaults.textButtonColors(),
-                ) {
-                    Text(stringResource(R.string.amuze_privacy_settings))
+                item {
+                    Button(
+                        onClick = {
+                            adsConsentManager.showConsentForm(activity)
+                        },
+                        Modifier.padding(top = 16.dp),
+                        colors = ButtonDefaults.textButtonColors(),
+                    ) {
+                        Text(stringResource(R.string.amuze_privacy_settings))
+                    }
                 }
             }
-             }
             item {
                 Column(
                     Modifier
                         .padding(top = 16.dp)
                         .fillMaxHeight(0.7f),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     Text(
                         stringResource(R.string.amuze_sponsor),
                         Modifier.padding(top = 16.dp),
-                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     )
                     Text(
                         stringResource(R.string.amuze_appreciation),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
                     )
                     Row(
                         Modifier.fillMaxWidth().padding(top = 16.dp),
                         horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Button(
                             onClick = {
@@ -176,7 +177,7 @@ fun AboutScreen(
                             },
                             Modifier.padding(end = 16.dp),
                             colors = ButtonDefaults.elevatedButtonColors(),
-                            elevation = ButtonDefaults.elevatedButtonElevation()
+                            elevation = ButtonDefaults.elevatedButtonElevation(),
                         ) {
                             Image(painterResource(R.drawable.ic_btc), contentDescription = "", Modifier.size(32.dp))
                             Text(stringResource(R.string.amuze_btc), Modifier.padding(start = 8.dp))
@@ -187,17 +188,23 @@ fun AboutScreen(
                             },
                             Modifier.padding(start = 16.dp),
                             colors = ButtonDefaults.elevatedButtonColors(),
-                            elevation = ButtonDefaults.elevatedButtonElevation()
+                            elevation = ButtonDefaults.elevatedButtonElevation(),
                         ) {
                             Image(painterResource(R.drawable.ic_eth), contentDescription = "", Modifier.size(32.dp))
                             Text(stringResource(R.string.amuze_eth), Modifier.padding(start = 8.dp))
                         }
                     }
                     Button(
-                        onClick = { showWalletAddressDialog(R.string.usdc_address, R.string.amuze_usdc, R.drawable.ic_usdc) },
+                        onClick = {
+                            showWalletAddressDialog(
+                                R.string.usdc_address,
+                                R.string.amuze_usdc,
+                                R.drawable.ic_usdc,
+                            )
+                        },
                         Modifier.padding(16.dp),
                         colors = ButtonDefaults.elevatedButtonColors(),
-                        elevation = ButtonDefaults.elevatedButtonElevation()
+                        elevation = ButtonDefaults.elevatedButtonElevation(),
                     ) {
                         Image(painterResource(R.drawable.ic_usdc), contentDescription = "", Modifier.size(32.dp))
                         Text(stringResource(R.string.amuze_usdc), Modifier.padding(start = 8.dp))
@@ -209,23 +216,27 @@ fun AboutScreen(
         Column(
             Modifier.align(Alignment.BottomCenter),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly
+            verticalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(
                 onClick = {
                     context.openWebLink(R.string.infbyte_website)
                 },
                 colors = ButtonDefaults.elevatedButtonColors(),
-                elevation = ButtonDefaults.elevatedButtonElevation()
+                elevation = ButtonDefaults.elevatedButtonElevation(),
             ) {
                 Icon(
                     painterResource(R.drawable.ic_language),
-                    contentDescription = "", Modifier.size(32.dp),
-                    tint = MaterialTheme.colorScheme.primary
+                    contentDescription = "",
+                    Modifier.size(32.dp),
+                    tint = MaterialTheme.colorScheme.primary,
                 )
                 Text(stringResource(R.string.amuze_website), Modifier.padding(start = 8.dp))
             }
-            Text(stringResource(R.string.amuze_copyright, Char(169), Calendar.getInstance().get(Calendar.YEAR)), Modifier.padding(8.dp))
+            Text(
+                stringResource(R.string.amuze_copyright, Char(169), Calendar.getInstance().get(Calendar.YEAR)),
+                Modifier.padding(8.dp),
+            )
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.infbyte.amuze_android.ui.theme
+package com.infbyte.amuze.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

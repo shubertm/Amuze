@@ -6,25 +6,22 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Slider
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.infbyte.amuze.R
+import com.infbyte.amuze.ads.GoogleMobileAdsConsentManager
 import com.infbyte.amuze.ui.dialogs.WalletAddressDialog
-import com.infbyte.amuze_android.ui.theme.AmuzeAndroidTheme
 import com.infbyte.amuze.ui.screens.AboutScreen
 import com.infbyte.amuze.ui.screens.LoadingScreen
 import com.infbyte.amuze.ui.screens.NoMediaAvailableScreen
 import com.infbyte.amuze.ui.screens.NoMediaPermissionScreen
 import com.infbyte.amuze.ui.screens.NoSearchResultScreen
 import com.infbyte.amuze.ui.views.AmuzeSeekBar
-import com.infbyte.amuze.ads.GoogleMobileAdsConsentManager
+import com.infbyte.amuze_android.ui.theme.AmuzeAndroidTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

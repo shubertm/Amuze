@@ -23,21 +23,21 @@ import com.infbyte.amuze.R
 fun NoSearchResultScreen() {
     Column(
         Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
             Icons.Filled.Search,
             contentDescription = "",
             Modifier.padding(top = 96.dp).size(96.dp),
-            tint = MaterialTheme.colorScheme.primary
+            tint = MaterialTheme.colorScheme.primary,
         )
         Box(
-            Modifier.padding(8.dp).background(MaterialTheme.colorScheme.background, RoundedCornerShape(5.dp))
+            Modifier.padding(8.dp).background(MaterialTheme.colorScheme.background, RoundedCornerShape(5.dp)),
         ) {
             Text(
                 stringResource(R.string.amuze_no_matches_found),
                 Modifier.padding(8.dp),
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
             )
         }
     }

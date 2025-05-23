@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 
@@ -28,17 +27,16 @@ fun BoxScope.AmuzeSeekBar(
         value = progress,
         onValueChange = { onSeekTo(it) },
         modifier =
-        Modifier
-            .padding(
-                start = 32.dp,
-                end = 32.dp,
-                bottom = 8.dp,
-            ).align(alignment),
+            Modifier
+                .padding(
+                    start = 32.dp,
+                    end = 32.dp,
+                    bottom = 8.dp,
+                ).align(alignment),
         interactionSource = interactionSource,
         track = { SliderDefaults.Track(it, Modifier.height(4.dp)) },
         thumb = { SliderDefaults.Thumb(interactionSource, thumbSize = DpSize(3.dp, 16.dp)) },
         colors =
-        SliderDefaults.colors(inactiveTrackColor = MaterialTheme.colorScheme.primaryContainer),
+            SliderDefaults.colors(inactiveTrackColor = MaterialTheme.colorScheme.primaryContainer),
     )
 }
-

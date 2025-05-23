@@ -29,7 +29,8 @@ class AppSettingsContract : ActivityResultContract<String, Boolean>() {
         intent: Intent?,
     ): Boolean {
         return if (context != null) {
-            val granted = isReadAudioPermissionGranted(context!!) ||
+            val granted =
+                isReadAudioPermissionGranted(context!!) ||
                     isReadVideoPermissionGranted(context!!)
             context = null
             granted

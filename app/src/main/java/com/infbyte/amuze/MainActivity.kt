@@ -21,7 +21,6 @@ import com.infbyte.amuze.ui.screens.NoMediaPermissionScreen
 import com.infbyte.amuze.ui.screens.NoSearchResultScreen
 import com.infbyte.amuze.ui.theme.AmuzeAndroidTheme
 import com.infbyte.amuze.ui.views.AmuzeSeekBar
-import com.infbyte.amuze.BuildConfig
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

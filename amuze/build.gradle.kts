@@ -11,7 +11,7 @@ plugins {
     alias(libs.plugins.gradle.ktlint)
 }
 
-val versionName: String = System.getenv("VERSION_NAME") ?: "0.2.4-a"
+val versionName: String = System.getenv("VERSION_NAME") ?: "0.0.1"
 val artifactId = "amuze"
 val groupId = "com.infbyte"
 
